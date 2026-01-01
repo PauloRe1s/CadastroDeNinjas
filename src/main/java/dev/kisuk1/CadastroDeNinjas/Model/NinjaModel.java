@@ -2,6 +2,8 @@ package dev.kisuk1.CadastroDeNinjas.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 //TODO: Entity - Transforma a classe em uma entidade no Banco de Dados (Tabela)
 @Entity
@@ -15,6 +17,11 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    // @ManyToOne - Muitos ninjas Para Uma unica Missão
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // ForeingKey ou Chave Estrangeira
+    private List<MissoesModel> missoes;
 
     //TODO: NoArgsConstructors
     public NinjaModel() {}
