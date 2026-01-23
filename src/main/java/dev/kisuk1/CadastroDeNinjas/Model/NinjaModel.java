@@ -2,9 +2,15 @@ package dev.kisuk1.CadastroDeNinjas.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_ninja")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class NinjaModel {
 
     @Id
