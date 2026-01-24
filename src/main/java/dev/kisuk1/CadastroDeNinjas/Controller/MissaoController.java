@@ -17,7 +17,7 @@ public class MissaoController {
     }
 
     @PostMapping("/post")
-    public MissaoModel postMissao(MissaoModel newMissao) {
+    public MissaoModel postMissao(@RequestBody MissaoModel newMissao) {
         return missaoService.createMissao(newMissao);
     }
 
@@ -27,17 +27,17 @@ public class MissaoController {
     }
 
     @GetMapping("/getById/{id}")
-    public MissaoModel getByIdMissao(Long id) {
+    public MissaoModel getByIdMissao(@PathVariable Long id) {
         return missaoService.readByIdMissao(id);
     }
 
     @PutMapping("/put/{id}")
-    public MissaoModel putMissao(Long id, MissaoModel upMissao) {
+    public MissaoModel putMissao(@PathVariable Long id, @RequestBody MissaoModel upMissao) {
         return missaoService.updateMissao(id, upMissao);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteMissao(Long id) {
+    public void deleteMissao(@PathVariable Long id) {
         missaoService.deleteMissao(id);
     }
 }
