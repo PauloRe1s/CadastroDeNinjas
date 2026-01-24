@@ -33,8 +33,7 @@ public class MissaoService {
         Optional<MissaoModel> missaoExists = missaoRepository.findById(id);
         if (missaoExists.isPresent()) {
             upMissao.setId(id);
-            MissaoModel missaoSave = missaoRepository.save(upMissao);
-            return missaoSave;
+            return missaoRepository.save(upMissao);
         }
         return null;
     }
