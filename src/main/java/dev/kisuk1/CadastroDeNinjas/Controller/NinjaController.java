@@ -1,6 +1,7 @@
 package dev.kisuk1.CadastroDeNinjas.Controller;
 
-import dev.kisuk1.CadastroDeNinjas.Model.NinjaModel;
+import dev.kisuk1.CadastroDeNinjas.DTO.NinjaDTO;
+import dev.kisuk1.CadastroDeNinjas.Mapper.NinjaMapper;
 import dev.kisuk1.CadastroDeNinjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ public class NinjaController {
 
     private NinjaService ninjaService;
 
-    public NinjaController(NinjaService ninjaService) {
+    public NinjaController(NinjaService ninjaService, NinjaMapper ninjaMapper) {
         this.ninjaService = ninjaService;
     }
 
@@ -22,23 +23,23 @@ public class NinjaController {
     }
 
     @PostMapping("/post")
-    public NinjaModel postNinja(@RequestBody NinjaModel newNinja) {
-        return ninjaService.createNinja(newNinja);
+    public NinjaDTO postNinja(@RequestBody NinjaDTO newNinjaDTO) {
+        return ninjaService.createNinja(newNinjaDTO);
     }
 
     @GetMapping("/getAll")
-    public List<NinjaModel> getAllNinja() {
+    public List<NinjaDTO> getAllNinja() {
         return ninjaService.readAllNinja();
     }
 
     @GetMapping("/getById/{id}")
-    public NinjaModel getByIdNinja(@PathVariable Long id) {
+    public NinjaDTO getByIdNinja(@PathVariable Long id) {
         return ninjaService.readByIdNinja(id);
     }
 
     @PutMapping("/put/{id}")
-    public NinjaModel putNinja(@PathVariable Long id, @RequestBody NinjaModel upNinja) {
-        return ninjaService.updateNinja(id, upNinja);
+    public NinjaDTO putNinja(@PathVariable Long id, @RequestBody NinjaDTO upNinjaDTO) {
+        return ninjaService.updateNinja(id, upNinjaDTO);
     }
 
     @DeleteMapping("/delete/{id}")
